@@ -34,7 +34,7 @@ Not every stage needs the same brain. Reasoning-heavy judgment (Strategy, Critic
 The money question for any agentic system: how do you know it didn't break something?
 
 - **Differential oracle** *(designed, pre-launch)* — the core logic already exists **twice**: a React build, and a native engine hand-ported from it that's authoritative on device. Two independent implementations of the same rules make each one the other's oracle, which is what catches a "fixed one side, not the other" divergence. Wiring them into an automated gate is pre-launch work — the technique itself is built and runnable in [evals-differential-oracle](https://github.com/egnaro9/evals-differential-oracle).
-- **Logic invariants** — core rules (e.g. *"a reward is granted only by a direct player action — never by a cascade or a power-up"*) are enforced as tests, in **both** implementations.
+- **Logic invariants** — core rules (e.g. *"a reward is granted only by a direct player action — never by a cascade or a power-up"*) are enforced as **property-based tests over the native engine** — the implementation that's authoritative on device. 52 tests, device-free, one command. The rule itself is implemented on both sides and proven on hardware; the automated enforcement lives on the engine.
 - **On-device validation** — adb-driven tests confirm behavior on real hardware, not just in a mock.
 
 ## The autonomy ladder
