@@ -1,6 +1,6 @@
 # Agentic Development Harness — a case study
 
-A self-directed system that lets AI agents **plan, build, review, and validate their own changes** to a shipping product — with a human on every step that can't be undone.
+A self-directed system that lets AI agents **plan, build, review, and validate their own changes** to a real Android game (built, pre-launch) — with a human on every step that can't be undone.
 
 Built solo, from first principles, over ~4 months. This repo documents the **architecture**; the product source stays private.
 
@@ -33,7 +33,7 @@ Not every stage needs the same brain. Reasoning-heavy judgment (Strategy, Critic
 ## The oracle — correctness you can *prove*
 The money question for any agentic system: how do you know it didn't break something?
 
-- **Differential oracle** — the same core logic runs in **two independent implementations** (a React build and a native engine). Invariant tests hold both to the same rules; a divergence in one is caught by the other.
+- **Differential oracle** *(designed, pre-launch)* — the core logic already exists **twice**: a React build, and a native engine hand-ported from it that's authoritative on device. Two independent implementations of the same rules make each one the other's oracle, which is what catches a "fixed one side, not the other" divergence. Wiring them into an automated gate is pre-launch work — the technique itself is built and runnable in [evals-differential-oracle](https://github.com/egnaro9/evals-differential-oracle).
 - **Logic invariants** — core rules (e.g. *"a reward is granted only by a direct player action — never by a cascade or a power-up"*) are enforced as tests, in **both** implementations.
 - **On-device validation** — adb-driven tests confirm behavior on real hardware, not just in a mock.
 
