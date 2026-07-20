@@ -1,6 +1,6 @@
 # Agentic Development Harness — a case study
 
-A self-directed system that lets AI agents **plan, build, review, and validate their own changes** to a real Android game (built, pre-launch) — with a human on every step that can't be undone.
+A self-directed system that lets AI agents **plan, build, review, and validate their own changes** to a real Android game (built, pre-launch), with a human on every step that can't be undone.
 
 Built solo, from first principles, over ~4 months. It's built to *ship*, not to gold-plate: every gate below exists so I can move fast without shipping something broken. This repo documents the **architecture**; the product source stays private.
 
@@ -28,7 +28,7 @@ Strategy → Execution → Critic → Evaluation → Ops
 Hooks arm the next stage on their own, so the loop advances without a human babysitting each handoff.
 
 ## The manager — and where I sit
-Above the five stages sits one **orchestration layer** that I direct: it plans each unit of work, routes it to the right role and model, and holds the system's state between steps. I designed the roles, the gates, and the routing; the harness runs them. I'm not outside the loop supervising a black box — I'm the system's judgment and authority, and the manager is the layer that extends that across many parallel agents.
+Above the five stages sits one **orchestration layer** that I direct: it plans each unit of work, routes it to the right role and model, and holds the system's state between steps. I designed the roles, the gates, and the routing; the harness runs them. I'm inside the loop as its judgment and authority, and the manager extends that across many parallel agents.
 
 ## Per-role model routing
 Not every stage needs the same brain. Reasoning-heavy judgment (Strategy, Critic, Evaluation) runs on a stronger, colder model; routine execution runs on a faster one. A **model-gate** refuses to let a judgment role run on an under-powered model.
