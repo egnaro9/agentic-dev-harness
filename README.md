@@ -68,7 +68,7 @@ The same operator + harness, on public work you can check:
 - An arcade game — **Tap Dodge Rush**, under SeraphLight Studios — shipped end-to-end to [Google Play](https://play.google.com/store/apps/details?id=com.seraphlight.tapdodgerush).
 - A one-character fix **merged upstream into TeaVM** (the Java-to-JavaScript compiler), closing a long-dormant issue.
 - A **live public model-drift board** grading 16 LLMs daily on a frozen, deterministically-graded suite — no LLM-as-judge, so a score change is real.
-- Ten public repos, including a [differential-oracle testing project](https://github.com/egnaro9/evals-differential-oracle) and a Model Context Protocol server built from the spec.
+- Twenty public repos, including a [differential-oracle testing project](https://github.com/egnaro9/evals-differential-oracle) and a Model Context Protocol server built from the spec.
 
 ## What I take from it
 - Evals and oracles are the hard, valuable part; getting a demo to work *once* is not the job.
