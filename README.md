@@ -1,6 +1,6 @@
 # Agentic Development Harness — a case study
 
-A self-directed system that lets AI agents **plan, build, review, and validate their own changes** to a real Android game (shipped to Google Play), with a human on every step that can't be undone.
+A self-directed system that lets AI agents **plan, build, review, and validate their own changes** to two real products: an Android game shipped to Google Play, and a second, larger game in development on React / Capacitor. A human is on every step that can't be undone.
 
 Built solo, from first principles, over ~4 months. It's built to *ship*, not to gold-plate: every gate below exists so I can move fast without shipping something broken. This repo documents the **architecture**; the product source stays private.
 
@@ -16,14 +16,14 @@ Coding agents are easy to demo and hard to *trust*. The moment they touch a real
 Work moves through five stages, each handing off automatically:
 
 ```
-Strategy → Execution → Critic → Evaluation → Ops
+Strategy → Execution → Critic → Ops        (+ Evaluation, asynchronous)
 ```
 
 - **Strategy** plans the change.
 - **Execution** builds it.
 - **Critic** reviews it in *cold context* — a fresh model with no memory of building it — so it catches what the builder rationalized away.
-- **Evaluation** runs the checks.
 - **Ops** ships it, behind a human gate.
+- **Evaluation** is the fifth role but not a fifth step: it scores completed batches out of band rather than gating each change, so a slow scoring pass never blocks the loop.
 
 Hooks arm the next stage on their own, so the loop advances without a human babysitting each handoff.
 
