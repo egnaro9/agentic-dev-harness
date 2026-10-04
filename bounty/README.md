@@ -41,9 +41,11 @@ only findings that pass all three get a Hardhat regression test. Reports land in
 
 ## 3. Submitting
 
-Reproduce any surviving finding yourself before submitting. Cantina charges $10 per
-submission (refunded if valid), pays only for findings with a working
-proof-of-concept, and treats everything in the prior audit reports as known.
+Reproduce any surviving finding yourself before submitting. Cantina requires a $100 deposit per
+submission, wants enough information to reproduce and fix the issue (a proof-of-concept
+is preferred, and is our bar), rates severity as impact x likelihood, requires the issue
+to be previously unknown and non-public, and lists every prior audit report as known
+issues.
 Do not commit findings or test files to a public repository before the report is
 accepted.
 
