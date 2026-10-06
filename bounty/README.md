@@ -54,3 +54,26 @@ accepted.
   secrets off the machine (or run in a separate macOS user or a container).
 - `wf-reserve-core-shard.js` assumes the workspace layout the setup script creates:
   `protocol-3ad40fa`, `protocol-3.4.0`, `coreaud` under the `scratch` directory.
+
+## Added 2026-10-05: Foundry review, target scouting, weekly watch
+
+Three more pieces of tooling from the 3F Grunt run and the search for the next target.
+None of them contain findings, proof tests or reports; those never go into git.
+
+- `wf-grunt-review-foundry.js`: the Foundry counterpart of `wf-reserve-core-shard.js`.
+  Nine units x two lenses plus a gap pass, three independent checks per candidate
+  (known or fixed upstream, executed reproduction, scope and trust model), a Foundry
+  proof test per survivor, one report. Reviewers work in copy-on-write clones
+  (`cp -cR`) and run `forge test --offline`. Args: `scratch` (workspace holding the
+  pinned tree, upstream clone, `known/` corpus, `work/` and `poc/`), `foundry`
+  (directory holding `forge`), `today`. The target-specific part is the `COMMON`,
+  `UNITS` and `LENSES` blocks near the top; swap those for a new Foundry target.
+- `wf-bounty-target-scouting.js`: finds the next target on fresh code. Sweeps the
+  platforms, reads each one's rules on AI-assisted work, fees and KYC, deep-reads
+  the best candidates, has a skeptic re-check the facts, and writes one ranked list.
+  Args: `scratch`, `today`.
+- `scheduled-task-bounty-target-watch.md`: the weekly Monday check that replaced
+  hunting once scouting found nothing live. Copy it to
+  `~/.claude/scheduled-tasks/bounty-target-watch/SKILL.md` and register it with the
+  scheduled-tasks tool (cron `30 9 * * 1`). It appends to `~/bounty/watch/watch-log.md`
+  and sends one push notification per run.
